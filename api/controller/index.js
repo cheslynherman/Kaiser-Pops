@@ -25,3 +25,28 @@ routes.post("/login", bodyParser.json(), (req, res) => {
 });
 
 // products router
+
+routes.post("/product", bodyParser.json(), (req, res) => {
+    products.createProduct(req, res);
+});
+
+routes.get("/products", (req, res) => {
+    products.fetchProducts(req, res);
+});
+
+routes.get("/products/:id", (req, res) => {
+    products.fetchProduct(req, res);
+});
+
+routes.patch("/products/:id", bodyParser.json(), (req, res) => {
+    products.updateProduct(req, res);
+});
+
+routes.delete("/products/:id", (req, res) => {
+    products.deleteProduct(req, res);
+});
+
+module.exports = {
+    express,
+    routes
+};

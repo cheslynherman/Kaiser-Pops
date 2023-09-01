@@ -1,5 +1,5 @@
 const db = require("../config");
-const {hash, compare, hashSync} = require("bcryptjs");
+const {hash, compare, hashSync} = require("bcrypt");
 const {createToken} = require("../middleware/authenticateUser");
 
 class Users {
@@ -7,8 +7,8 @@ class Users {
         const query = `
         SELECT userID, firstName, lastName, email, gender, age, city, userPassword, userImage, roles 
         FROM users
-        `
-        db,query(query, (err, results) => {
+        `;
+        db.query(query, (err, results) => {
             if(err) throw err
             res.json({
                 status: res.statusCode,
@@ -75,17 +75,17 @@ class Users {
     }
 
     async register (req, res) {
-        const data = req.body
-        data.userPassword = await hash(data.userPassword, 20);
+        const data = req.body;
+        data.userPassword = await hash(data.userPassword, 15);
         const user = {
             email: data.email,
-            userPassword: data.userPassword
+            userPassword: data.userPassword,
         };
 
         const query = 
         `
         INSERT INTO users SET ? 
-        `
+        `;
         db.query(query, [data], (err) => {
             if (err) throw err
 
