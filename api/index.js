@@ -1,4 +1,5 @@
 const {express, routes} = require("./controller");
+const cookieParser = require('cookie-parser')
 const path = require("path");
 const port = +process.env.port || 3000;
 const app= express ();
@@ -14,7 +15,7 @@ app.use((req, res, next) => {
 
 app.use(express.static("./static"));
 
-app.use(express.urlencoded({extended:false}), routes);
+app.use(express.urlencoded({extended:false}),cookieParser(), routes);
 
 routes.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
