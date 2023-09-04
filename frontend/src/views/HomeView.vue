@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="main">
     <div class="logo container-fluid d-flex justify-content-center">
       <h1 class="kaiserPops">Kaiser Pops</h1>
     </div>
@@ -10,6 +10,70 @@
 
   <div class="carousels">
     <div
+      id="firstCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/v869BnWj/groot-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/K84mGPT3/vegeta-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/HnfVw6XK/IT-removebg-preview-1.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/F15Hd7QX/carl-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/fWjzBTZy/maki-removebg-preview-1.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#firstCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#firstCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="carousels">
+    <div
       id="carouselExampleInterval"
       class="carousel slide"
       data-bs-ride="carousel"
@@ -17,22 +81,36 @@
       <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="2000">
           <img
-            src="https://i.postimg.cc/pLk57JH9/iron-man-boxed-removebg-preview.png"
-            class="d-block m-auto w-100"
+            src="https://i.postimg.cc/y8rYcQKT/obito-boxed-removebg-preview-1.png"
+            class="d-block m-auto w-25 img-fluid"
             alt="Image"
           />
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img
-            src="https://i.postimg.cc/pLk57JH9/iron-man-boxed-removebg-preview.png"
-            class="d-block m-auto w-100"
+            src="https://i.postimg.cc/NMKXR9ZK/agatha-vs-wanda-boxed-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
             alt="Image"
           />
         </div>
         <div class="carousel-item" data-bs-interval="2000">
           <img
-            src="https://i.postimg.cc/pLk57JH9/iron-man-boxed-removebg-preview.png"
-            class="d-block m-auto w-100"
+            src="https://i.postimg.cc/T18Kmkrs/gotg-boxed-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/ht8fmbjy/IT-boxed-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
+            alt="Image"
+          />
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img
+            src="https://i.postimg.cc/26dDcTsM/Frieza-boxed-removebg-preview.png"
+            class="d-block m-auto w-25 img-fluid"
             alt="Image"
           />
         </div>
@@ -81,10 +159,34 @@ export default {};
 
 .logo2 {
   margin-top: 30px;
+  margin-bottom: 100px;
 }
+
 
 .carousels {
   margin: 50px;
   height: 50vh;
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+border: 2px solid #526D82;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+transform: skewY(5deg);
 }
+
+.carousel-inner {
+  transform: skewY(-5deg);
+}
+
+.carousel-control-next-icon {
+    filter: invert(100%);
+  }
+
+
+  .carousel-control-prev-icon {
+    filter: invert(100%);
+  }
 </style>

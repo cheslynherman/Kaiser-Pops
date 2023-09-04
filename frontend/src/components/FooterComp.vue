@@ -17,4 +17,7 @@ footer {
   margin-top: 20px;
   padding: 10px;
 }
+p {
+  text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
 </style>

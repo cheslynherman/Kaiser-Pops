@@ -72,6 +72,7 @@
   
   a {
     text-decoration: none;
+    text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
   }
   nav a.router-link-exact-active {
   border-bottom: 2px solid #526D82;

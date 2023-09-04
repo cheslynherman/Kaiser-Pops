@@ -63,7 +63,7 @@
       </div>
 
       <div class="submit">
-        <button type="submit">Send</button>
+        <button type="submit">Submit</button>
       </div>
       <div class="reset">
         <button type="reset">Reset</button>
@@ -76,10 +76,10 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .formSection {
   border: 2px solid #526d82;
-  width: 55%;
+  width: 50%;
   margin: auto;
   padding: 15px;
 }
@@ -95,7 +95,7 @@ export default {};
 p {
     font-size: 11px;
 }
-h2 {
+h2, label {
     text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
 }
 input, textarea {
