@@ -16,7 +16,7 @@ app.use(express.static("./static"));
 
 app.use(express.urlencoded({extended:false}), routes);
 
-routes.get("^/$|/Kaiser-Pops", (req, res) => {
+routes.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./static/html/index.html"));
 });
 
