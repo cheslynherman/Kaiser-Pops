@@ -6,7 +6,7 @@
       data-bs-toggle="modal"
       data-bs-target="#addProduct"
     >
-      Add User
+      Add Product
     </button>
   
     <!-- Modal -->
@@ -31,59 +31,46 @@
           <div class="modal-body">
             <form >
               <div class="inputs">
-                <label for="firstName">First Name</label>
-                <input type="text" v-model="payload.firstName" id="firstName" required />
+                <label for="productName">Product Name</label>
+                <input type="text" v-model="payload.productName" id="firstName" required />
               </div>
   
               <div class="inputs">
-                <label for="lastName">Last Name</label>
-                <input type="text" v-model="payload.lastName" id="lastName" required />
+                <label for="quantity">Quantity</label>
+                <input type="number" v-model="payload.quantity" id="quantity" required />
               </div>
   
               <div class="inputs">
-                <label for="email">Email Address</label>
-                <input type="text" v-model="payload.email" id="email" required />
+                <label for="price">Price</label>
+                <input type="number" v-model="payload.price" id="price" required />
+              </div>
+              
+              <div class="inputs">
+                <label for="category">Categoty</label>
+                <input type="text" v-model="payload.category" id="category" required />
+              </div>
+
+              <div class="inputs">
+                <label for="description">Description</label>
+                <input type="text" v-model="payload.descr" id="description" required />
+              </div>
+  
+  
+              <div class="inputs">
+                <label for="prodImg1">Product Image 1</label>
+                <input type="url" v-model="payload.prodImg1" id="prodImg1" required />
               </div>
   
               <div class="inputs">
-                <label for="gender">Gender</label>
-                <input type="text" v-model="payload.gender" id="gender" required />
+                <label for="prodImg2">Product Image 2</label>
+                <input type="url" v-model="payload.prodImg2" id="prodImg2" required />
               </div>
-  
-              <div class="inputs">
-                <label for="age">Age</label>
-                <input type="number" v-model="payload.age" id="age" required />
-              </div>
-  
-              <div class="inputs">
-                <label for="city">City</label>
-                <input type="text" v-model="payload.city" id="city" required />
-              </div>
-  
-              <div class="inputs">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  v-model="payload.userPassword"
-                  id="password"
-                  required
-                />
-              </div>
-  
-              <div class="inputs">
-                <label for="userImage">User Image</label>
-                <input type="url" v-model="payload.userImage" id="userImage" required />
-              </div>
-  
-              <div class="inputs">
-                <label for="role">Role</label>
-                <input type="text" v-model="payload.roles" id="role" required />
-              </div>
+
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="" data-bs-dismiss="modal">Close</button>
-            <button type="submit" @click="addUser" class="">Save changes</button>
+            <button type="submit" @click="addProduct" class="">Save changes</button>
           </div>
         </div>
       </div>
@@ -95,22 +82,21 @@
     data() {
       return {
         payload: {
-          firstName: "",
-          lastName: "",
-          email: "",
-          gender: "",
-          age: "",
-          city: "",
-          userPassword: "",
-          userImage: "https://i.postimg.cc/K8bnFjqz/icons8-user-96.png",
-          roles: "user",
+          productName: "",
+          quantity: "",
+          price: "",
+          category: "",
+          descr: "",
+          prodImg1: "",
+          prodImg2: "",
+          
         },
       };
     },
     methods: {
-      addUser() {
+      addProduct() {
           this.$store.dispatch("register", this.payload)
-          alert ("User Has Been Added Successfully");
+          alert ("Product Has Been Added Successfully");
           window.location.reload()
       }
     }

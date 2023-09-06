@@ -79,6 +79,9 @@ export default createStore({
         console.error(error);
       }
     },
+    async addProduct(context, payload) {
+      
+    },
     getUsers: async (context) => {
       try {
         const res = await fetch (`${url}users`)
