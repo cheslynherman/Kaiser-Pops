@@ -50,7 +50,7 @@ class Products {
     const query = `
     INSERT INTO products SET ?
     `
-    db.query(query, [req.body], (err) =>{
+    db.query(query, req.body, (err) =>{
         if(err) throw err
         res.json ({
             status: res.statusCode,
