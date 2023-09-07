@@ -32,7 +32,7 @@
             <form >
               <div class="inputs">
                 <label for="productName">Product Name</label>
-                <input type="text" v-model="payload.productName" id="firstName" required />
+                <input type="text" v-model="payload.productName" id="productName" required />
               </div>
   
               <div class="inputs">
@@ -65,12 +65,11 @@
                 <label for="prodImg2">Product Image 2</label>
                 <input type="url" v-model="payload.prodImg2" id="prodImg2" required />
               </div>
-
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="" data-bs-dismiss="modal">Close</button>
-            <button type="submit" @click="addProduct()" class="">Save changes</button>
+            <div class="modal-footer">
+              <button type="button" class="" data-bs-dismiss="modal">Close</button>
+              <button type="submit" @click="addProduct()" class="">Save changes</button>
+            </div>
           </div>
         </div>
       </div>

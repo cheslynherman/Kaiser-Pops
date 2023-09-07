@@ -49,6 +49,9 @@ export default createStore({
     setUser: (state, value) => {
       state.user = value;
     },
+    setMessage: (state, value) => {
+      state.message = value;
+    }
   },
   actions: {
     getProducts: async (context) => {
@@ -77,20 +80,51 @@ export default createStore({
         console.error(error);
       }
     },
-    async addProduct(context, payload) {
+    async delProduct (context, id) {
       try {
-        const res = await axios.post(`${url}product`, payload);
-        const { message, err } = await res.data;
+        const res = await axios.delete(`${url}products/${id}`)
+        const {message, err} = res.data
         if (err) {
-          context.commit("message", "Unable to add product");
+          console.error("An error has occurred: ", err)
+          context.commit ("setMessage", "Unable to delete product")
         }
         if (message) {
-          context.commit("setProduct", message);
+          context.dispatch ("getProducts")
+          context.commit ("setProduct", message)
+          console.log ("Product has been deleted")
         }
-      } catch (error) {
-        context.commit("message", "You incurred an error");
+      } catch (e) {
+        context.commit("setMessage", "an error occurred")
       }
     },
+  
+    // addProduct: async (context, payload) => {
+    //   try {
+    //     const res= await axios.post(`${url}product`, payload)
+    //     if (!res.ok) {
+    //       throw new Error("unable to add product");
+    //     }
+    //     const {message, err} = await res.data
+    //     context.commit("setProduct", payload);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
+    // async addProduct(context, payload) {
+    //   try {
+    //     const res = await axios.post(`${url}product`, payload)
+    //     const {message, err} = await res.data
+    //     if (err) {
+    //       context.commit("message", "Unable to add products")
+    //     }
+    //     if (message) {
+    //       context.commit ("setProduct", message)
+    //     }
+    //   } catch (e) {
+    //     context.commit ("message", "You incurred an error")
+    //   }
+
+    
     getUsers: async (context) => {
       try {
         const res = await fetch(`${url}users`);
@@ -117,6 +151,7 @@ export default createStore({
         console.error(error);
       }
     },
+    
     async register(context, payload) {
       try {
         const res = await axios.post(`${url}register`, payload);
@@ -131,5 +166,35 @@ export default createStore({
         context.commit("message", "You incurred an error");
       }
     },
+    async delUser(context, id) {
+      try {
+        const res = await axios.delete(`${url}user/${id}`)
+        const {message, err} = res.data
+        if (err) {
+          console.error("An error has occured: ", err)
+          context.commit ("setMessage", "Unable to delete user")
+        }
+        if (message) {
+          context.dispatch ("getUsers")
+          context.commit ("setUser", message)
+          console.log ("User deleted successfully")
+        }
+      } catch (e){
+        context.commit("setMessage", "an error occurred")
+      }
+    },
+    // async updateUser (context, payload) {
+    //   try {
+    //     const res = await axios.patch(`${url}user/${payload.userID}`, payload.data);
+    //     const {message, err} = res.data 
+    //     if(message) {
+    //       context.commit("setUser", message)
+    //     } else {
+    //       context.commit("setMessage", err)
+    //     }
+    //   } catch {
+    //     context.commit("setMessage", "error occurred while updating user")
+    //   }
+    // }
   },
 });

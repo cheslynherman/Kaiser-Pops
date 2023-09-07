@@ -25,7 +25,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.age }}</td>
             <td><img :src="user.userImage" alt="user"></td>
-            <td><button>placeholder</button><button>placeholder</button></td>
+            <td><button @click="delUser(user.userID)">Delete</button><EditUser/></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>
@@ -61,7 +61,7 @@
             <td>{{ product.price }}</td>
             <td><img :src="product.prodImg2" :alt="product.productName" class="img-fluid"></td>
             <td><img :src="product.prodImg1" :alt="product.productName" class="img-fluid"></td>
-            <td><button>placeholder</button><button>placeholder</button></td>
+            <td><button @click="delProduct(product.productID)">Delete</button><button>placeholder</button></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>
@@ -72,7 +72,8 @@
 
 <script>
 import AddUser from '@/components/AddUser.vue'
-import AddProduct from '@/components/AddProduct.vue';
+import AddProduct from '@/components/AddProduct.vue'
+import EditUser from '@/components/EditUser.vue';
 export default {
     created() {
         this.$store.dispatch("getUsers"), this.$store.dispatch("getProducts")
@@ -85,9 +86,26 @@ export default {
             return this.$store.state.products
         }
     },
+    methods: {
+        delUser(id){
+            if (confirm ("You are deleting user, are you sure?")){
+                this.$store.dispatch ("delUser", id);
+                alert ("this user has been deleted");
+                window.location.reload();
+            }
+        },
+        delProduct(id) {
+            if (confirm ("You are deleting product, are you sure")) {
+                this.$store.dispatch ("delProduct", id);
+                alert ("this product has been deleted")
+                window.location.reload(); 
+            }
+        }
+    },
     components: {
         AddUser,
-        AddProduct
+        AddProduct,
+        EditUser 
     }
 };
 </script>
