@@ -46,7 +46,7 @@
               </div>
               
               <div class="inputs">
-                <label for="category">Categoty</label>
+                <label for="category">Category</label>
                 <input type="text" v-model="payload.category" id="category" required />
               </div>
 
@@ -70,7 +70,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="" data-bs-dismiss="modal">Close</button>
-            <button type="submit" @click="addProduct" class="">Save changes</button>
+            <button type="submit" @click="addProduct()" class="">Save changes</button>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
     },
     methods: {
       addProduct() {
-          this.$store.dispatch("register", this.payload)
+          this.$store.dispatch("addProduct", this.payload)
           alert ("Product Has Been Added Successfully");
           window.location.reload()
       }

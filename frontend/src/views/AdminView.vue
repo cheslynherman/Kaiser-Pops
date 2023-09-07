@@ -38,7 +38,7 @@
       <h3 class="text-center">Products</h3>
     </div>
     <div>
-      <button>Placeholder</button>
+     <AddProduct/>
     </div>
     <div class="productTable">
       <table>
@@ -71,7 +71,8 @@
 </template>
 
 <script>
-import AddUser from '@/components/AddUser.vue';
+import AddUser from '@/components/AddUser.vue'
+import AddProduct from '@/components/AddProduct.vue';
 export default {
     created() {
         this.$store.dispatch("getUsers"), this.$store.dispatch("getProducts")
@@ -85,7 +86,8 @@ export default {
         }
     },
     components: {
-        AddUser
+        AddUser,
+        AddProduct
     }
 };
 </script>
