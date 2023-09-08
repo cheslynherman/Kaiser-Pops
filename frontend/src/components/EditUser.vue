@@ -2,10 +2,10 @@
   <!-- Button trigger modal -->
   <button
     type="button"
-    class="btn btn-primary"
+    class=""
     @click="openModal(user.userID)"
     data-bs-toggle="modal"
-    :data-bs-target="'#editUser + user.userID'"
+    :data-bs-target="'#editUser' + user.userID"
   >
     Edit
   </button>
@@ -13,7 +13,7 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    :id="'editUser + user.userID'"
+    :id="'editUser' + user.userID"
     tabindex="-1"
     :aria-labelledby="'editUser' + user.userID"
     aria-hidden="true"
@@ -31,6 +31,11 @@
         </div>
         <div class="modal-body">
           <form>
+            <div class="inputs">
+              <label for="userID">User ID</label>
+              <input type="text" v-model="update.userID" id="userID" />
+            </div>
+
             <div class="inputs">
               <label for="firstName">First Name</label>
               <input type="text" v-model="update.firstName" id="firstName" />
@@ -91,6 +96,8 @@ export default {
       update: {
         ...this.user,
       },
+      updateUserID: null,
+
       user: {
         firstName: "",
         lastName: "",
@@ -103,21 +110,54 @@ export default {
       },
     };
   },
+  computed: {
+    currentUser() {
+      return this.$store.state.user;
+    },
+  },
 
   methods: {
     openModal(userID) {
+      this.updateUserID = userID;
       this.update = {
-        ...this.$store.state.users.find((user) => user.userID),
+        ...this.$store.state.users.find((user) => user.userID === userID),
       };
     },
-    updateUser(id) {
-      this.$store.dispatch("updateUser", {
-        userID: id,
-        data: { ...this.update },
-      });
+    updateUser(userID) {
+      this.$store
+        .dispatch("updateUser", {
+          userID: userID,
+          ...this.update,
+        })
+        .then(() => {
+          alert("User has been updated");
+          console.log("User has been updated");
+        })
+        .catch((err) => {
+          console.error("Error", err);
+        });
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+    background: #526D82;
+    border-radius: 30px;
+    width: 100px;
+    color: #272829;
+    border: 2px solid #526D82;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+button:hover {
+    box-shadow: 0 0 30px 5px #526d82;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+</style>

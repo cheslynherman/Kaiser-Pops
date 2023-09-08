@@ -2,7 +2,7 @@
   <!-- Button trigger modal -->
   <button
     type="button"
-    class="btn btn-primary"
+    class=""
     data-bs-toggle="modal"
     data-bs-target="#addUser"
   >
@@ -117,4 +117,23 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+button {
+    background: #526D82;
+    border-radius: 30px;
+    width: 100px;
+    color: #272829;
+    border: 2px solid #526D82;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+button:hover {
+    box-shadow: 0 0 30px 5px #526d82;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+</style>
