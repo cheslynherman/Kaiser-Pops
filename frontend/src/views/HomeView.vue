@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main container-fluid">
     <div class="logo container-fluid d-flex justify-content-center">
       <h1 class="kaiserPops">Kaiser Pops</h1>
     </div>
@@ -7,8 +7,8 @@
       <h1 class="slogan">Popping Dreams Into Reality</h1>
     </div>
   </main>
+  
   <div class="container-fluid d-flex justify-content-center">
-    <!-- <div class="col-2"></div> -->
     <div class="carousels">
       <div id="firstCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -132,7 +132,51 @@
         </button>
       </div>
     </div>
-    <!-- <div class="col-2"></div> -->
+  </div>
+
+  <div class="pop-container">
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
+    <div class="pop-card">
+      <img
+        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
+        class="popImg"
+      />
+    </div>
   </div>
 </template>
 
@@ -175,7 +219,12 @@ export default {};
   border: 1px solid rgba(82, 109, 130, 1);
   transform: skewY(5deg);
 }
-
+.pop-container {
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
 .carousel-inner {
   transform: skewY(-5deg);
 }
