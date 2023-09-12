@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Home</h2>
     <table>
       <tr>
@@ -38,8 +38,13 @@
       </tr>
       <tr>
         <td>POST</td>
-        <td>/user</td>
+        <td>/register</td>
         <td>Creates a new user</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/login</td>
+        <td>Logs in a single user with their details</td>
       </tr>
       <tr>
         <td>PATCH/PUT</td>
@@ -61,12 +66,12 @@
       </tr>
       <tr>
         <td>GET</td>
-        <td>/Products</td>
+        <td>/products</td>
         <td>Displays a list of products</td>
       </tr>
       <tr>
-        <td>GET </td>
-        <td>/Product/:id</td>
+        <td>GET</td>
+        <td>/products/:id</td>
         <td>Displays a single user by id</td>
       </tr>
       <tr>
@@ -76,14 +81,54 @@
       </tr>
       <tr>
         <td>PUT/PATCH</td>
-        <td>/Products/:id</td>
+        <td>/products/:id</td>
         <td>Updates a products details</td>
       </tr>
       <tr>
-        <td>DELETE </td>
-        <td>/Products/:id</td>
+        <td>DELETE</td>
+        <td>/products/:id</td>
         <td>deletes a product from the database</td>
       </tr>
     </table>
-</body>
+
+    <h2>Cart Table</h2>
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/cart</td>
+        <td>Displays a list of all orders made</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/user/:id/carts</td>
+        <td>Displays orders made by a single user</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/user/:id/cart</td>
+        <td>Adds a product to the cart</td>
+      </tr>
+      <tr>
+        <td>PATCH</td>
+        <td>/user/:id/cart/:id</td>
+        <td>Updates a product in the cart</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/user/:id/cart</td>
+        <td>Clears a users cart</td>
+      </tr>
+
+      <tr>
+        <td>DELETE</td>
+        <td>/user/:id/cart/:id</td>
+        <td>Deletes a single item from the users cart</td>
+      </tr>
+    </table>
+  </body>
 </html>
