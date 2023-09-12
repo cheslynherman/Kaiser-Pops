@@ -152,10 +152,5 @@ button {
     transition: all 0.2s ease-in;
 }
 
-button:hover {
-    box-shadow: 0 0 30px 5px #526d82;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-}
+
 </style>
