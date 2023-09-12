@@ -29,12 +29,12 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form @submit.prevent="addProduct">
             <div class="inputs">
               <label for="productName">Product Name</label>
               <input
                 type="text"
-                v-model="payload.productName"
+                v-model="productData.productName"
                 id="productName"
                 required
               />
@@ -44,7 +44,7 @@
               <label for="quantity">Quantity</label>
               <input
                 type="number"
-                v-model="payload.quantity"
+                v-model="productData.quantity"
                 id="quantity"
                 required
               />
@@ -54,7 +54,7 @@
               <label for="price">Price</label>
               <input
                 type="number"
-                v-model="payload.price"
+                v-model="productData.price"
                 id="price"
                 required
               />
@@ -64,7 +64,7 @@
               <label for="category">Category</label>
               <input
                 type="text"
-                v-model="payload.category"
+                v-model="productData.category"
                 id="category"
                 required
               />
@@ -74,7 +74,7 @@
               <label for="description">Description</label>
               <input
                 type="text"
-                v-model="payload.descr"
+                v-model="productData.descr"
                 id="description"
                 required
               />
@@ -84,7 +84,7 @@
               <label for="prodImg1">Product Image 1</label>
               <input
                 type="url"
-                v-model="payload.prodImg1"
+                v-model="productData.prodImg1"
                 id="prodImg1"
                 required
               />
@@ -94,20 +94,18 @@
               <label for="prodImg2">Product Image 2</label>
               <input
                 type="url"
-                v-model="payload.prodImg2"
+                v-model="productData.prodImg2"
                 id="prodImg2"
                 required
               />
             </div>
-          </form>
-          <div class="modal-footer">
             <button type="button" class="" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="submit" @click="addProduct()" class="">
+            <button type="submit" class="">
               Save changes
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -115,10 +113,12 @@
 </template>
 
 <script>
+import router from '@/router';
 export default {
+  props: ["product"],
   data() {
     return {
-      payload: {
+      productData: {
         productName: "",
         quantity: "",
         price: "",
@@ -131,9 +131,8 @@ export default {
   },
   methods: {
     addProduct() {
-      this.$store.dispatch("addProduct", this.payload);
-      alert("Product Has Been Added Successfully");
-      window.location.reload();
+      this.$store.dispatch("addProduct", this.productData);
+      router.push("/admin");
     },
   },
 };
@@ -141,16 +140,14 @@ export default {
 
 <style scoped>
 button {
-    background: #526D82;
-    border-radius: 30px;
-    width: 120px;
-    color: #272829;
-    border: 2px solid #526D82;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
+  background: #526d82;
+  border-radius: 30px;
+  width: 120px;
+  color: #272829;
+  border: 2px solid #526d82;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
-
-
 </style>

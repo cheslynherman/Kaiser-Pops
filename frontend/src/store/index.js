@@ -11,6 +11,7 @@ export default createStore({
     user: null,
     asc: true,
     message: null,
+    cart: null,
   },
 
   mutations: {
@@ -53,6 +54,16 @@ export default createStore({
     setMessage: (state, value) => {
       state.message = value;
     },
+    setCart: (state, value) => {
+      state.cart = value
+    },
+    addToCart(state, product) {
+      state.cart.push(product);
+    },
+    removeFromCart(state, orderId) {
+      state.cart = state.cart.filter((cart) => cart.orderId !== orderId)
+    },
+
   },
   actions: {
     getProducts: async (context) => {
@@ -117,33 +128,24 @@ export default createStore({
         context.commit("setMessage", e);
       }
     },
-    // async addProduct(context, payload) {
-    //   try {
-    //     const {res} = await axios.post(`${url}product`, payload)
-    //     const {message, err} = await res.data
-    //     if (message) {
-    //       context.dispatch("getProducts")
-    //       context.commit("setProduct", message)
-    //     } else {
-    //       context.commit("setMessage", err)
-    //     }
-    //   } catch (e) {
-    //     context.commit("setMessage", e)
-    //   }
-    // },
-    // async addProduct(context, payload) {
-    //   try {
-    //     const res = await axios.post(`${url}product`, payload)
-    //     const {message, err} = await res.data
-    //     if (err) {
-    //       context.commit("message", "Unable to add products")
-    //     }
-    //     if (message) {
-    //       context.commit ("setProduct", message)
-    //     }
-    //   } catch (e) {
-    //     context.commit ("message", "You incurred an error")
-    //   }
+    async addProduct(context, payload) {
+      try {
+        const {message, err} = (await axios.post(`${url}product`, payload)).data
+        if (message) {
+          
+          context.commit("setProduct", message)
+          context.dispatch('getProducts')
+        } else {
+          context.commit("setMessage", err)
+        }
+      } catch (e) {
+        context.commit("setMessage", e)
+      }
+    },
+    async getCart(context, id) {
+      const res = await axios.get(`${url}user/${id}/carts`);
+      context.commit("setCart")
+    },
 
     getUsers: async (context) => {
       try {

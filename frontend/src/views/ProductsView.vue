@@ -17,13 +17,13 @@
     </div>
 
     <div>
-      <button class="cart">
+      <router-link to="/cart" class="cart">
         <img
           src="https://i.postimg.cc/sx6sXqfw/icons8-cart-100-2.png"
           alt="cart"
           class="cart-img img-fluid"
         />
-      </button>
+      </router-link>
     </div>
   </div>
 
@@ -121,5 +121,10 @@ select {
 .text-center {
   text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
   text-transform: capitalize;
+}
+
+.display {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 </style>
