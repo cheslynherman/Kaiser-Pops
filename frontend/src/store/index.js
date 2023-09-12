@@ -1,6 +1,9 @@
 import { createStore } from "vuex";
 const url = "https://kaiser-pops-api.onrender.com/";
 import axios from "axios";
+// import sweet from 'sweet-alert'
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
 import router from "@/router";
 
 export default createStore({
@@ -8,10 +11,14 @@ export default createStore({
     products: null,
     product: null,
     users: null,
-    user: null,
+    user: null || JSON.parse(localStorage.getItem("user")),
+    userAuthorization: null,
+    loggedUser: false,
     asc: true,
     message: null,
     cart: null,
+    userData: null,
+    token: null || localStorage.getItem("token"),
   },
 
   mutations: {
@@ -45,25 +52,32 @@ export default createStore({
       }
       state.asc = !state.asc;
     },
-    setUsers: (state, value) => {
-      state.users = value;
+    setUsers: (state, users) => {
+      state.users = users;
     },
-    setUser: (state, value) => {
-      state.user = value;
+    setUser: (state, user) => {
+      state.user = user,
+      state.userAuthorization = true,
+      localStorage.setItem("user", JSON.stringify(user))
+    },
+    setLoggedUser: (state, loggedUser) => {
+      state.loggedUser = loggedUser
     },
     setMessage: (state, value) => {
       state.message = value;
     },
     setCart: (state, value) => {
-      state.cart = value
+      state.cart = value;
     },
     addToCart(state, product) {
       state.cart.push(product);
     },
     removeFromCart(state, orderId) {
-      state.cart = state.cart.filter((cart) => cart.orderId !== orderId)
+      state.cart = state.cart.filter((cart) => cart.orderId !== orderId);
     },
-
+    setToken: (state, token) => {
+      state.token = token;
+    },
   },
   actions: {
     getProducts: async (context) => {
@@ -130,22 +144,45 @@ export default createStore({
     },
     async addProduct(context, payload) {
       try {
-        const {message, err} = (await axios.post(`${url}product`, payload)).data
+        const { message, err } = (await axios.post(`${url}product`, payload))
+          .data;
         if (message) {
-          
-          context.commit("setProduct", message)
-          context.dispatch('getProducts')
+          context.commit("setProduct", message);
+          context.dispatch("getProducts");
         } else {
-          context.commit("setMessage", err)
+          context.commit("setMessage", err);
         }
       } catch (e) {
-        context.commit("setMessage", e)
+        context.commit("setMessage", e);
       }
     },
-    async getCart(context, id) {
-      const res = await axios.get(`${url}user/${id}/carts`);
-      context.commit("setCart")
-    },
+    // async getCart(context, id) {
+    //   const res = await axios.get(`${url}user/${id}/carts`);
+    //   context.commit("setCart");
+    // },
+
+    // async addProdToCart({ commit }, { userID, productID }) {
+    //   try {
+    //     const res = await axios.post(`${url}user/${userID}}/cart`, {
+    //       userID,
+    //       productID,
+    //     });
+    //     if (res.status === 200) {
+    //       commit("addToCart", res.data);
+    //     } else {
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
+    // async deleteFromCart({ commit }, { userID, orderId }) {
+    //   try {
+    //     await axios.delete(`${url}user/${userID}/cart/${orderId}`);
+    //     commit("removeFromCart", orderId);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
 
     getUsers: async (context) => {
       try {
@@ -222,14 +259,22 @@ export default createStore({
       }
     },
     async login(context, payload) {
-      const res = await axios.post(`${url}login`, payload);
-      const { cresult, err } = await res.data;
-      localStorage.setItem("user", JSON.stringify(cresult));
-      if (cresult) {
-        context.commit("setUser", cresult);
-        router.push("/");
-      } else {
-        context.commit("setMessage", err);
+      try {
+        const res = await axios.post(`${baseUrl}login`, payload);
+        const { result, jwToken, msg, err } = await res.data;
+
+        if (result) {
+          context.commit("setUser", result);
+          context.commit("setToken", jwToken);
+          localStorage.setItem("setToken", jwToken);
+          localStorage.setItem("user", JSON.stringify(result));
+          cookies.set("setToken", jwToken);
+          context.commit("setMsg", msg);
+        } else {
+          context.commit("setMsg", err);
+        }
+      } catch (e) {
+        console.error(e);
       }
     },
   },

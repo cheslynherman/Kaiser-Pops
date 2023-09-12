@@ -27,6 +27,8 @@ export default {
     background: transparent !important;
     border: 1px solid #526D82;
     border-radius: 0px;
+    margin: 10px;
+    padding: 10px;
 }
 a {
     text-decoration: none;

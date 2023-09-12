@@ -30,16 +30,18 @@
         <router-link to="/register">Not signed up yet?</router-link>
       </div>
       <div class="text-center">
-        <button type="submit" @click.prevent="login()">Login</button>
+        <button type="submit">Login</button>
       </div>
     </form>
   </div>
 </template>
 
-<script>
-import router from '@/router';
+<!-- <script>
+
+import {useCookies} from 'vue3-cookies'
+const {cookies} = useCookies()
 export default {
-    setup() {
+    data() {
         return {
             payload: {
                 email: "",
@@ -47,15 +49,64 @@ export default {
             }
         }
     },
+    computed: {
+      message() {
+        return this.$store.state.message
+      },
+      user() {
+        return this.$store.state.user
+      }
+    },
     methods: {
         login() {
-            
             this.$store.dispatch("login", this.payload)
-            router.push("/")
+            this.$router.push("/")
         }
+    },
+    mounted() {
+      console.log(cookies.get("setToken"))
+    }
+};
+</script> -->
+
+<script>
+import { useCookies } from "vue3-cookies";
+const { cookies } = useCookies();
+export default {
+  props: ['payload'],
+
+    data() {
+        return {
+            payload: {
+                email: "",
+                userPassword: "",
+            }
+        }
+    },
+
+    computed: {
+        message() {
+            return this.$store.state.message
+        },
+
+        user() {
+            return this.$store.state.user
+        }
+    },
+
+    methods: {
+        login() {
+            this.$store.dispatch('login', this.payload)
+            this.$router.push("/");
+        }
+    },
+
+    mounted() {
+      console.log(cookies.get('setToken'));
     }
 };
 </script>
+
 
 <style scoped>
 .form {

@@ -126,5 +126,6 @@ select {
 .display {
     display: grid;
     grid-template-columns: auto auto auto auto;
+    justify-content: center;
 }
 </style>
