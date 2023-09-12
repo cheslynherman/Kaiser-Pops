@@ -48,6 +48,10 @@ routes.delete("/products/:id", (req, res) => {
 
 // cart routes
 
+routes.get("/cart", (req, res) => {
+  cart.fetchOrders(req,res);
+})
+
 routes.get("/user/:id/carts", (req, res) => {
   cart.fetchCart(req, res);
 });
