@@ -35,7 +35,7 @@ class Users {
   async login(req, res) {
     const { email, userPassword } = req.body;
     const query = `
-        SELECT userID, firstName, email, roles, userPassword, gender, age, city, userImage
+        SELECT userID, firstName, lastName, email, roles, userPassword, gender, age, city, userImage
         FROM users
         WHERE email = '${email}'
         `;
