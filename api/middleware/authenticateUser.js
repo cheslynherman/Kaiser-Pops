@@ -17,10 +17,31 @@ function createToken(user) {
 // verify token
 function verifyToken(req, res, next) {
   try {
-    console.log("Get token from req.headers['authorization']");
-    const token = req.headers["authorization"];
-    console.log(token);
-    next();
+    const token =
+      req.cookies["AuthUser"] !== null
+        ? req.cookies["AuthUser"]
+        : "Unregistered User";
+
+    const isValid = null;
+
+    if (!token) {
+      isValid = verify(token, process.env.secret_key);
+
+      if (isValid) {
+        req.authenticated = true;
+        next();
+      } else {
+        res.json({
+          status: res.statusCode,
+          message: "Please register!",
+        });
+      }
+    } else {
+      res.json({
+        status: res.statusCode,
+        message: "Please register!",
+      });
+    }
   } catch (err) {
     res.json({
       status: res.statusCode,
@@ -29,7 +50,4 @@ function verifyToken(req, res, next) {
   }
 }
 
-module.exports = {
-  createToken,
-  verifyToken,
-};
+module.exports = { createToken, verifyToken };

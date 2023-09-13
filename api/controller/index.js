@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const routes = express.Router();
 // Import all models objects
 const { users, products, cart } = require("../model");
+const verifyToken = require("../middleware/authenticateUser")
 
 // users router
 routes.get("/users", (req, res) => {
