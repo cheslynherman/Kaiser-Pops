@@ -146,6 +146,7 @@ button:hover {
 td, th {
     border: 2px solid #526D82;
     padding: 10px;
+    text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
 }
 
 .userTable, .productTable {

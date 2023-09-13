@@ -101,4 +101,8 @@ export default {};
   margin: auto;
   padding: 10px;
 }
+
+h1, h2, h3, p {
+  text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
 </style>

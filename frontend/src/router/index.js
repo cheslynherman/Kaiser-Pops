@@ -54,6 +54,15 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../views/CartView.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    beforeEnter() {
+      localStorage.removeItem("setToken")
+      localStorage.removeItem("user")
+      router.push({name:"login"})
+    }
   }
 ]
 

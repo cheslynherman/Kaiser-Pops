@@ -142,9 +142,11 @@ export default {};
 </script>
 
 <style scoped>
+
 .logo {
   align-items: center;
   margin-top: 20vh;
+  font-family: 'Sedgwick Ave Display', cursive;
 }
 
 .kaiserPops {
@@ -160,6 +162,7 @@ export default {};
 .logo2 {
   margin-top: 30px;
   margin-bottom: 100px;
+  font-family: 'Sedgwick Ave Display', cursive;
 }
 
 .carousels {
