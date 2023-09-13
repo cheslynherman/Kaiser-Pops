@@ -36,7 +36,7 @@
             <router-link to="/admin" class="navButtons"
               >Admin</router-link
             >
-            <router-link to="/profile/:id" class="navButtons"
+            <router-link to="/profile" class="navButtons"
               ><img src="https://i.postimg.cc/K8bnFjqz/icons8-user-96.png" class="routerImg"></router-link
             >
           </div>

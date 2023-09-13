@@ -134,50 +134,7 @@
     </div>
   </div>
 
-  <!-- <div class="pop-container">
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-    <div class="pop-card">
-      <img
-        src="https://i.postimg.cc/kgMBxRb7/todoroki-removebg-preview.png"
-        class="popImg"
-      />
-    </div>
-  </div> -->
+  
 </template>
 
 <script>

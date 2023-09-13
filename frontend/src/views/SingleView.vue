@@ -29,6 +29,10 @@ export default {
 <style scoped>
     h1, p {
         text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+        margin: 10px;
     }
-    
+    img {
+        height: 400px;
+        margin: 10px;
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <footer class="container-fluid d-flex">
-    <p>©️ Built By The Legend Cheslyn Herman 2023</p>
+    <p>©️ Built By The Legend Cheslyn Herman {{ new Date().getFullYear() }}</p>
   </footer>
 </template>
 

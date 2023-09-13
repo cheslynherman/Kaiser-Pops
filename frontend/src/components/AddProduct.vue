@@ -23,88 +23,107 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
           <button
             type="button"
-            class="btn-close"
+            
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          >X</button>
         </div>
         <div class="modal-body">
           <form @submit.prevent="addProduct">
             <div class="inputs">
-              <label for="productName">Product Name</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Name</label
+              >
               <input
                 type="text"
                 v-model="productData.productName"
-                id="productName"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="quantity">Quantity</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Quantity</label
+              >
               <input
                 type="number"
                 v-model="productData.quantity"
-                id="quantity"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="price">Price</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Price</label
+              >
               <input
                 type="number"
                 v-model="productData.price"
-                id="price"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="category">Category</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Category</label
+              >
               <input
                 type="text"
                 v-model="productData.category"
-                id="category"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="description">Description</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Description</label
+              >
               <input
                 type="text"
                 v-model="productData.descr"
-                id="description"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="prodImg1">Product Image 1</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Image 1</label
+              >
               <input
                 type="url"
                 v-model="productData.prodImg1"
-                id="prodImg1"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="prodImg2">Product Image 2</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Image 2</label
+              >
               <input
                 type="url"
                 v-model="productData.prodImg2"
-                id="prodImg2"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
-            <button type="button" class="" data-bs-dismiss="modal">
-              Close
+            <button type="reset" class="">
+              Reset
             </button>
-            <button type="submit" class="">
-              Save changes
-            </button>
+            <button type="submit" class="">Submit</button>
           </form>
         </div>
       </div>
@@ -113,7 +132,7 @@
 </template>
 
 <script>
-import router from '@/router';
+import router from "@/router";
 export default {
   props: ["product"],
   data() {
@@ -132,6 +151,7 @@ export default {
   methods: {
     addProduct() {
       this.$store.dispatch("addProduct", this.productData);
+      alert("Product has been added successfully")
       router.push("/admin");
     },
   },
@@ -139,15 +159,50 @@ export default {
 </script>
 
 <style scoped>
+
+.inputs {
+  margin: 10px;
+}
+
+.modal-content {
+  background: #FFDD83;
+}
+
+input {
+  border: 2px solid #526d82 !important;
+  background: #526d82 !important;
+  border-radius: 30px !important;
+  color: #272829;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+input:hover {
+  background: #526d82;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 button {
   background: #526d82;
   border-radius: 30px;
   width: 120px;
+  margin: 10px;
   color: #272829;
   border: 2px solid #526d82;
   box-shadow: 0 0 0 0 transparent;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+}
+
+button:hover {
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

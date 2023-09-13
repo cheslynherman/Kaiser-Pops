@@ -1,112 +1,80 @@
 <template>
-  <div class="form">
-    <form @submit.prevent="login">
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Email address:</label
-        >
-        <input
-          type="email"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-          required
-          v-model="payload.email"
-        />
+  <h2 class="text-center">Login</h2>
+  <div class="login">
+    <div class="form">
+      <div class="inputs">
+        <form @submit.prevent="login">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Email address:</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              required
+              v-model="payload.email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Password:</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              required
+              v-model="payload.userPassword"
+            />
+          </div>
+          <div class="link">
+            <router-link to="/register">Not signed up yet?</router-link>
+          </div>
+          <div class="text-center">
+            <button type="submit">Login</button>
+          </div>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Password:</label
-        >
-        <input
-          type="password"
-          class="form-control"
-          id="exampleFormControlTextarea1"
-          required
-          v-model="payload.userPassword"
-        />
-      </div>
-      <div class="link">
-        <router-link to="/register">Not signed up yet?</router-link>
-      </div>
-      <div class="text-center">
-        <button type="submit">Login</button>
-      </div>
-    </form>
+    </div>
   </div>
 </template>
-
-<!-- <script>
-
-import {useCookies} from 'vue3-cookies'
-const {cookies} = useCookies()
-export default {
-    data() {
-        return {
-            payload: {
-                email: "",
-                userPassword: ""
-            }
-        }
-    },
-    computed: {
-      message() {
-        return this.$store.state.message
-      },
-      user() {
-        return this.$store.state.user
-      }
-    },
-    methods: {
-        login() {
-            this.$store.dispatch("login", this.payload)
-            this.$router.push("/")
-        }
-    },
-    mounted() {
-      console.log(cookies.get("setToken"))
-    }
-};
-</script> -->
 
 <script>
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 export default {
-  props: ['payload'],
+  data() {
+    return {
+      payload: {
+        email: "",
+        userPassword: "",
+      },
+    };
+  },
 
-    data() {
-        return {
-            payload: {
-                email: "",
-                userPassword: "",
-            }
-        }
+  computed: {
+    message() {
+      return this.$store.state.message;
     },
 
-    computed: {
-        message() {
-            return this.$store.state.message
-        },
-
-        user() {
-            return this.$store.state.user
-        }
+    user() {
+      return this.$store.state.user;
     },
+  },
 
-    methods: {
-        login() {
-            this.$store.dispatch('login', this.payload)
-            this.$router.push("/");
-        }
+  methods: {
+    login() {
+      this.$store.dispatch("login", this.payload);
+      this.$router.push("/");
     },
+  },
 
-    mounted() {
-      console.log(cookies.get('setToken'));
-    }
+  mounted() {
+    console.log(cookies.get("setToken"));
+  },
 };
 </script>
-
 
 <style scoped>
 .form {
@@ -114,6 +82,17 @@ export default {
   border: 2px solid #526d82;
   margin: auto;
   padding: 20px;
+}
+.login {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputs {
+  width: 80%;
+  margin: auto;
+  padding: 10px;
 }
 .link {
   text-align: right;
@@ -125,7 +104,6 @@ a {
 
 label {
   text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
-  
 }
 input {
   border: 2px solid #526d82 !important;
@@ -136,10 +114,28 @@ input {
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  
 }
 
 input:hover {
+  background: #526d82;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+button {
+  background: #526d82;
+  border: 2px solid #526d82;
+  border-radius: 30px;
+  width: 100px;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+button:hover {
   background: #526d82;
   box-shadow: 0 0 30px 5px #526d82;
   -webkit-transition: all 0.2s ease-out;

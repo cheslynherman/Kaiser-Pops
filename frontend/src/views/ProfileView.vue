@@ -1,7 +1,7 @@
 <template>
-  <div class="profile container-fluid m-auto">
+  <div class="profile container-fluid text-center">
         <img :src="$store.state.user?.userImage">
-        <h3>{{ $store.state.user?.firstName }} {{ $store.state.user?.lastName }}</h3>
+        <h3>{{ $store.state.user?.firstName }} {{ $store.state.user?.lastName }}</h3> 
         <h3>{{ $store.state.user?.email }}</h3>
         <h3>{{ $store.state.user?.age }}</h3>
         <h3>{{ $store.state.user?.gender }}</h3>
@@ -26,5 +26,9 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    border: 2px solid #526D82;
+    border-radius: 50px;
+    margin: 10px;
+}
 </style>

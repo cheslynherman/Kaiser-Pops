@@ -21,69 +21,129 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" data-bs-dismiss="modal">X</button>
         </div>
         <div class="modal-body">
-          <form >
+          <form>
             <div class="inputs">
-              <label for="firstName">First Name</label>
-              <input type="text" v-model="payload.firstName" id="firstName" required />
-            </div>
-
-            <div class="inputs">
-              <label for="lastName">Last Name</label>
-              <input type="text" v-model="payload.lastName" id="lastName" required />
-            </div>
-
-            <div class="inputs">
-              <label for="email">Email Address</label>
-              <input type="text" v-model="payload.email" id="email" required />
-            </div>
-
-            <div class="inputs">
-              <label for="gender">Gender</label>
-              <input type="text" v-model="payload.gender" id="gender" required />
-            </div>
-
-            <div class="inputs">
-              <label for="age">Age</label>
-              <input type="number" v-model="payload.age" id="age" required />
-            </div>
-
-            <div class="inputs">
-              <label for="city">City</label>
-              <input type="text" v-model="payload.city" id="city" required />
-            </div>
-
-            <div class="inputs">
-              <label for="password">Password</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >First Name</label
+              >
               <input
-                type="password"
-                v-model="payload.userPassword"
-                id="password"
+                type="text"
+                v-model="payload.firstName"
+                class="form-control"
+                id="exampleFormControlInput1"
                 required
               />
             </div>
 
             <div class="inputs">
-              <label for="userImage">User Image</label>
-              <input type="url" v-model="payload.userImage" id="userImage" required />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                v-model="payload.lastName"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
             </div>
 
             <div class="inputs">
-              <label for="role">Role</label>
-              <input type="text" v-model="payload.roles" id="role" required />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                v-model="payload.email"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
             </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Gender</label
+              >
+              <input
+                type="text"
+                v-model="payload.gender"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Age</label
+              >
+              <input
+                type="number"
+                v-model="payload.age"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >City</label
+              >
+              <input
+                type="text"
+                v-model="payload.city"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Password</label
+              >
+              <input
+                type="password"
+                v-model="payload.userPassword"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >User Image</label
+              >
+              <input
+                type="url"
+                v-model="payload.userImage"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+
+            <div class="inputs">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Role</label
+              >
+              <input
+                type="text"
+                v-model="payload.roles"
+                class="form-control"
+                id="exampleFormControlInput1"
+                required
+              />
+            </div>
+            <button type="reset" class="">Reset</button>
+            <button type="submit" @click="addUser" class="">Submit</button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="" data-bs-dismiss="modal">Close</button>
-          <button type="submit" @click="addUser" class="">Save changes</button>
         </div>
       </div>
     </div>
@@ -109,31 +169,58 @@ export default {
   },
   methods: {
     addUser() {
-        this.$store.dispatch("register", this.payload)
-        alert ("User Has Been Added Successfully");
-        window.location.reload()
-    }
-  }
+      this.$store.dispatch("register", this.payload);
+      alert("User Has Been Added Successfully");
+      window.location.reload();
+    },
+  },
 };
 </script>
 
 <style scoped>
+.inputs {
+  margin: 10px;
+}
+
+.modal-content {
+  background: #ffdd83;
+}
+
+input {
+  border: 2px solid #526d82 !important;
+  background: #526d82 !important;
+  border-radius: 30px !important;
+  color: #272829;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+input:hover {
+  background: #526d82;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 button {
-    background: #526D82;
-    border-radius: 30px;
-    width: 100px;
-    color: #272829;
-    border: 2px solid #526D82;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
+  background: #526d82;
+  border-radius: 30px;
+  width: 120px;
+  margin: 10px;
+  color: #272829;
+  border: 2px solid #526d82;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 button:hover {
-    box-shadow: 0 0 30px 5px #526d82;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

@@ -56,12 +56,12 @@ export default createStore({
       state.users = users;
     },
     setUser: (state, user) => {
-      state.user = user,
-      state.userAuthorization = true,
-      localStorage.setItem("user", JSON.stringify(user))
+      (state.user = user),
+        (state.userAuthorization = true),
+        localStorage.setItem("user", JSON.stringify(user));
     },
     setLoggedUser: (state, loggedUser) => {
-      state.loggedUser = loggedUser
+      state.loggedUser = loggedUser;
     },
     setMessage: (state, value) => {
       state.message = value;
@@ -197,19 +197,31 @@ export default createStore({
         context.commit("message", "Error occurred when fetching users");
       }
     },
-    getUser: async (context, id) => {
+
+    async getUser(context, payload) {
       try {
-        const res = await fetch(`${url}users/${id}`);
-        if (!res.ok) {
-          throw new Error("Unable to fetch user");
-        }
-        const { result } = await res.json();
-        console.log(result);
-        context.commit("setUser", result);
-      } catch (error) {
-        console.error(error);
+        const { data } = await axios.get(
+          `${url}user/${payload.userID}`,
+          payload.data
+        );
+        context.commit("setUser", data.result);
+      } catch (err) {
+        context.commit("setMessage", "An error occurred while fetching user");
       }
     },
+    // getUser: async (context, id) => {
+    //   try {
+    //     const res = await fetch(`${url}users/${id}`);
+    //     if (!res.ok) {
+    //       throw new Error("Unable to fetch user");
+    //     }
+    //     const { result } = await res.json();
+    //     console.log(result);
+    //     context.commit("setUser", result);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
 
     async register(context, payload) {
       try {
@@ -260,18 +272,18 @@ export default createStore({
     },
     async login(context, payload) {
       try {
-        const res = await axios.post(`${baseUrl}login`, payload);
-        const { result, jwToken, msg, err } = await res.data;
+        const res = await axios.post(`${url}login`, payload);
+        const { err, token, message, result } = await res.data;
 
         if (result) {
           context.commit("setUser", result);
-          context.commit("setToken", jwToken);
-          localStorage.setItem("setToken", jwToken);
+          context.commit("setToken", token);
+          localStorage.setItem("setToken", token);
           localStorage.setItem("user", JSON.stringify(result));
-          cookies.set("setToken", jwToken);
-          context.commit("setMsg", msg);
+          cookies.set("AuthUser", { token, message, result });
+          context.commit("setMessage", message);
         } else {
-          context.commit("setMsg", err);
+          context.commit("setMessage", err);
         }
       } catch (e) {
         console.error(e);
