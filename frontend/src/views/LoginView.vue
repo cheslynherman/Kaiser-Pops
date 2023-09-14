@@ -13,6 +13,8 @@
               class="form-control"
               id="exampleFormControlInput1"
               required
+              oninvalid="this.setCustomValidity('Please insert your email address')"
+              oninput="this.setCustomValidity('')"
               v-model="payload.email"
             />
           </div>
@@ -25,6 +27,8 @@
               class="form-control"
               id="exampleFormControlTextarea1"
               required
+              oninvalid="this.setCustomValidity('Please insert your password')"
+              oninput="this.setCustomValidity('')"
               v-model="payload.userPassword"
             />
           </div>

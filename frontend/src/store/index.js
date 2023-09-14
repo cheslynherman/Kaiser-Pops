@@ -83,12 +83,16 @@ export default createStore({
     getProducts: async (context) => {
       try {
         const res = await fetch(`${url}products`);
-        if (!res.ok) {
-          throw new Error("Unable to fetch products");
+        // if (!res.ok) {
+        //   throw new Error("Unable to fetch products");
+        // }
+        const { results } = await res.json();
+        console.log(results);
+        if (results) {
+          context.commit("setProducts", results);
+        } else {
+          context.commit("message", "Results is empty");
         }
-        const products = await res.json();
-        console.log(products.results);
-        context.commit("setProducts", products.results);
       } catch (error) {
         context.commit("message", "Error occurred when fetching products");
       }
@@ -125,21 +129,19 @@ export default createStore({
     },
     async updateProduct(context, payload) {
       try {
-        const { res } = await axios.patch(
+        const res = await axios.patch(
           `${url}product/${payload.productID}`,
           data
         );
         const { message, err } = await res.data;
-        if (err) {
-          context.commit("setMessage", err);
-        }
         if (message) {
-          context.dispatch("getProducts");
           context.commit("setProduct", message);
-          context.commit("setMessage", "Successfully updated product.");
+          context.dispatch("getProducts");
+        } else {
+          context.commit("setMessage", err)
         }
       } catch (e) {
-        context.commit("setMessage", e);
+        context.commit("setMessage", "error");
       }
     },
     async addProduct(context, payload) {
@@ -256,13 +258,11 @@ export default createStore({
     },
     async updateUser(context, payload) {
       try {
-        const res = await axios.patch(
-          `${url}user/${payload.userID}`,
-          payload.data
-        );
-        const { message, err } = res.data;
+        const res = await axios.patch(`${url}user/${payload.userID}`, payload);
+        const { message, err } = await res.data;
         if (message) {
           context.commit("setUser", message);
+          context.dispatch("getUsers");
         } else {
           context.commit("setMessage", err);
         }

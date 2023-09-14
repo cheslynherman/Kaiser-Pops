@@ -21,15 +21,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
-          <button
-            type="button"
-            
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          >X</button>
+          <button type="button" data-bs-dismiss="modal" aria-label="Close">
+            X
+          </button>
         </div>
         <div class="modal-body">
           <form @submit.prevent="addProduct">
+            <p>All fields are required</p>
             <div class="inputs">
               <label for="exampleFormControlInput1" class="form-label"
                 >Product Name</label
@@ -40,7 +38,10 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert product name')"
+                oninput="this.setCustomValidity('')"
               />
+              
             </div>
 
             <div class="inputs">
@@ -53,6 +54,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert a quantity')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -66,6 +69,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert the price')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -79,6 +84,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert product category')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -92,6 +99,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert product description')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -105,6 +114,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert product image url')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -118,11 +129,11 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert product image url')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
-            <button type="reset" class="">
-              Reset
-            </button>
+            <button type="reset" class="">Reset</button>
             <button type="submit" class="">Submit</button>
           </form>
         </div>
@@ -151,7 +162,7 @@ export default {
   methods: {
     addProduct() {
       this.$store.dispatch("addProduct", this.productData);
-      alert("Product has been added successfully")
+      alert("Product has been added successfully");
       router.push("/admin");
     },
   },
@@ -159,13 +170,12 @@ export default {
 </script>
 
 <style scoped>
-
 .inputs {
   margin: 10px;
 }
 
 .modal-content {
-  background: #FFDD83;
+  background: #ffdd83;
 }
 
 input {

@@ -78,4 +78,8 @@ button:hover {
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
+h1, h3 {
+    text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
 </style>

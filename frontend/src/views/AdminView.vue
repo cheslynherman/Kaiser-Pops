@@ -25,7 +25,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.age }}</td>
             <td><img :src="user.userImage" alt="user" class="img-fluid"></td>
-            <td><button @click="delUser(user.userID)">Delete</button><EditUser/></td>
+            <td><button @click="delUser(user.userID)">Delete</button><EditUser :user="user"/></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>
@@ -61,7 +61,7 @@
             <td>{{ product.price }}</td>
             <td><img :src="product.prodImg1" :alt="product.productName" class="img-fluid"></td>
             <td><img :src="product.prodImg2" :alt="product.productName" class="img-fluid"></td>
-            <td><button @click="delProduct(product.productID)">Delete</button><EditProduct/></td>
+            <td><button @click="delProduct(product.productID)">Delete</button><EditProduct :product="product"/></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>

@@ -2,10 +2,10 @@
   <!-- Button trigger modal -->
   <button
     type="button"
-    @click="editProd(product.productID)"
+    @click="editProd(product?.productID)"
     class=""
     data-bs-toggle="modal"
-    :data-bs-target="'#editProduct' + product.productID"
+    :data-bs-target="'#editProduct' + product?.productID"
   >
     Edit
   </button>
@@ -13,9 +13,9 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    :id="'editProduct' + product.productID"
+    :id="'editProduct' + product?.productID"
     tabindex="-1"
-    :aria-labelledby="'exampleModalLabel' + product.productID"
+    :aria-labelledby="'editProduct' + product?.productID"
     aria-hidden="true"
   >
     <div class="modal-dialog">
@@ -30,68 +30,87 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form @submit.prevent="updateProduct">
             <div class="inputs">
-              <label for="productID">Product ID</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Name</label
+              >
               <input
                 type="text"
-                v-model="updateProd.productID"
-                id="productID"
+                v-model="payload.productName"
+                class="form-control"
+                id="exampleFormControlInput1"
               />
             </div>
             <div class="inputs">
-              <label for="productName">Product Name</label>
-              <input
-                type="text"
-                v-model="updateProd.productName"
-                id="productName"
-              />
-            </div>
-            <div class="inputs">
-              <label for="quantity">Quantity</label>
+              <label for="exampleFormControlInput1" class="form-label"
+                >Quantity</label
+              >
               <input
                 type="number"
-                v-model="updateProd.quantity"
-                id="productID"
+                v-model="payload.quantity"
+                class="form-control"
+                id="exampleFormControlInput1"
               />
             </div>
             <div class="inputs">
-              <label for="price">Price</label>
-              <input type="number" v-model="updateProd.price" id="price" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Price</label
+              >
+              <input
+                type="number"
+                v-model="payload.price"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
             <div class="inputs">
-              <label for="category">Category</label>
-              <input type="text" v-model="updateProd.category" id="category" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Category</label
+              >
+              <input
+                type="text"
+                v-model="payload.category"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
             <div class="inputs">
-              <label for="desc">Description</label>
-              <input type="text" v-model="updateProd.descr" id="desc" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Description</label
+              >
+              <input
+                type="text"
+                v-model="payload.descr"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
             <div class="inputs">
-              <label for="prodImg1">Product Image 1</label>
-              <input type="url" v-model="updateProd.prodImg1" id="prodImg1" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Image 1</label
+              >
+              <input
+                type="url"
+                v-model="payload.prodImg1"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
             <div class="inputs">
-              <label for="prodImg2">Product Image 2</label>
-              <input type="url" v-model="updateProd.prodImg2" id="prodImg2" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Product Image 2</label
+              >
+              <input
+                type="url"
+                v-model="payload.prodImg2"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
+            <button type="reset" class="">Reset</button>
+            <button type="submit" class="">Save</button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button
-            type="button"
-            @click="updateProduct(product.productID)"
-            class=""
-          >
-            Save changes
-          </button>
         </div>
       </div>
     </div>
@@ -107,14 +126,15 @@ export default {
         ...this.product,
       },
       updateProdID: null,
-      product: {
-        productName: "",
-        quantity: "",
-        price: "",
-        category: "",
-        descr: "",
-        prodImg1: "",
-        prodImg2: "",
+      payload: {
+        productID: this.product?.productID,
+        productName: this.product?.productName,
+        quantity: this.product?.quantity,
+        price: this.product?.price,
+        category: this.product?.category,
+        descr: this.product?.descr,
+        prodImg1: this.product?.prodImg1,
+        prodImg2: this.product?.prodImg2,
       },
     };
   },
@@ -132,39 +152,42 @@ export default {
         ),
       };
     },
-    updateProduct(productID) {
-        this.$store.dispatch("updateProduct", {
-            productID: productID,
-            ...this.updateProd,
-        })
-        .then(() => {
-            console.log("updated")
-        })
-        .catch((err) => {
-            console.error("error while updating", err)
-        })
-    }
+    updateProduct() {
+      this.$store.dispatch("updateProduct", this.payload)
+      // this.$store
+      //   .dispatch("updateProduct", {
+      //     productID: productID,
+      //     ...this.updateProd,
+      //   })
+      //   .then(() => {
+      //     console.log("updated");
+      //   })
+      //   .catch((err) => {
+      //     console.error("error while updating", err);
+      //   });
+    },
   },
 };
 </script>
 
 <style scoped>
 button {
-    background: #526D82;
-    border-radius: 30px;
-    width: 100px;
-    color: #272829;
-    border: 2px solid #526D82;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
+  background: #526d82;
+  border-radius: 30px;
+  width: 100px;
+  margin: 10px;
+  color: #272829;
+  border: 2px solid #526d82;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 button:hover {
-    box-shadow: 0 0 30px 5px #526d82;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

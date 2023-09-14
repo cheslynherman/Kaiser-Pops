@@ -3,9 +3,9 @@
   <button
     type="button"
     class=""
-    @click="openModal(user.userID)"
+    @click="openModal(user?.userID)"
     data-bs-toggle="modal"
-    :data-bs-target="'#editUser' + user.userID"
+    :data-bs-target="'#editUser' + user?.userID"
   >
     Edit
   </button>
@@ -13,9 +13,9 @@
   <!-- Modal -->
   <div
     class="modal fade"
-    :id="'editUser' + user.userID"
+    :id="'editUser' + user?.userID"
     tabindex="-1"
-    :aria-labelledby="'editUser' + user.userID"
+    :aria-labelledby="'editUser' + user?.userID"
     aria-hidden="true"
   >
     <div class="modal-dialog">
@@ -30,58 +30,105 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form @submit.prevent="updateUser">
             <div class="inputs">
-              <label for="userID">User ID</label>
-              <input type="text" v-model="update.userID" id="userID" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >First Name</label
+              >
+              <input
+                type="text"
+                v-model="payload.firstName"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="firstName">First Name</label>
-              <input type="text" v-model="update.firstName" id="firstName" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Last Name</label
+              >
+              <input
+                type="text"
+                v-model="payload.lastName"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="lastName">Last Name</label>
-              <input type="text" v-model="update.lastName" id="lastName" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                v-model="payload.email"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="email">Email Address</label>
-              <input type="text" v-model="update.email" id="email" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Gender</label
+              >
+              <input
+                type="text"
+                v-model="payload.gender"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="gender">Gender</label>
-              <input type="text" v-model="update.gender" id="gender" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Age</label
+              >
+              <input
+                type="number"
+                v-model="payload.age"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="age">Age</label>
-              <input type="number" v-model="update.age" id="age" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >City</label
+              >
+              <input
+                type="text"
+                v-model="payload.city"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="city">City</label>
-              <input type="text" v-model="update.city" id="city" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >User Image</label
+              >
+              <input
+                type="url"
+                v-model="payload.userImage"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
 
             <div class="inputs">
-              <label for="userImage">User Image</label>
-              <input type="url" v-model="update.userImage" id="userImage" />
+              <label for="exampleFormControlInput1" class="form-label"
+                >Role</label
+              >
+              <input
+                type="text"
+                v-model="payload.roles"
+                class="form-control"
+                id="exampleFormControlInput1"
+              />
             </div>
-
-            <div class="inputs">
-              <label for="role">Role</label>
-              <input type="text" v-model="update.roles" id="role" />
-            </div>
+            <button type="reset" class="">Reset</button>
+            <button type="submit" class="">Save</button>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="" data-bs-dismiss="modal">Close</button>
-          <button type="submit" @click="updateUser(user.userID)" class="">
-            Save changes
-          </button>
         </div>
       </div>
     </div>
@@ -98,15 +145,16 @@ export default {
       },
       updateUserID: null,
 
-      user: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        gender: "",
-        age: "",
-        city: "",
-        userImage: "",
-        roles: "",
+      payload: {
+        userID: this.user?.userID,
+        firstName: this.user?.firstName,
+        lastName: this.user?.lastName,
+        email: this.user?.email,
+        gender: this.user?.gender,
+        age: this.user?.age,
+        city: this.user?.city,
+        userImage: this.user?.userImage,
+        roles: this.user?.roles,
       },
     };
   },
@@ -123,41 +171,69 @@ export default {
         ...this.$store.state.users.find((user) => user.userID === userID),
       };
     },
-    updateUser(userID) {
-      this.$store
-        .dispatch("updateUser", {
-          userID: userID,
-          ...this.update,
-        })
-        .then(() => {
-          alert("User has been updated");
-          console.log("User has been updated");
-        })
-        .catch((err) => {
-          console.error("Error", err);
-        });
+    updateUser() {
+      // this.$store
+      //   .dispatch("updateUser", {
+      //     userID: userID,
+      //     ...this.update,
+      //   })
+      //   .then(() => {
+      //     alert("User has been updated");
+      //     console.log("User has been updated");
+      //   })
+      //   .catch((err) => {
+      //     console.error("Error", err);
+      //   });
+      this.$store.dispatch("updateUser", this.payload);
     },
   },
 };
 </script>
 
 <style scoped>
+.inputs {
+  margin: 10px;
+}
+
+.modal-content {
+  background: #ffdd83;
+}
+
+input {
+  border: 2px solid #526d82 !important;
+  background: #526d82 !important;
+  border-radius: 30px !important;
+  color: #272829;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+input:hover {
+  background: #526d82;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 button {
-    background: #526D82;
-    border-radius: 30px;
-    width: 100px;
-    color: #272829;
-    border: 2px solid #526D82;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
+  background: #526d82;
+  border-radius: 30px;
+  width: 100px;
+  margin: 10px;
+  color: #272829;
+  border: 2px solid #526d82;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 button:hover {
-    box-shadow: 0 0 30px 5px #526d82;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

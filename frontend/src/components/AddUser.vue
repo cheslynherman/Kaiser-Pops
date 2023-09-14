@@ -25,6 +25,7 @@
         </div>
         <div class="modal-body">
           <form>
+            <p>All fields are required</p>
             <div class="inputs">
               <label for="exampleFormControlInput1" class="form-label"
                 >First Name</label
@@ -35,6 +36,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert first name')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -48,6 +51,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert last name')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -61,6 +66,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert email address')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -74,6 +81,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert gender')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -87,6 +96,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert age')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -100,6 +111,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert residing city')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -113,6 +126,9 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                minlength="5"
+                oninvalid="this.setCustomValidity('Please set password')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -126,6 +142,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert user image url')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
 
@@ -139,6 +157,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 required
+                oninvalid="this.setCustomValidity('Please insert user role')"
+                oninput="this.setCustomValidity('')"
               />
             </div>
             <button type="reset" class="">Reset</button>
