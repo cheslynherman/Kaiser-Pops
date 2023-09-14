@@ -47,6 +47,7 @@
 <script>
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
+import Swal from "sweetalert2"
 export default {
   data() {
     return {

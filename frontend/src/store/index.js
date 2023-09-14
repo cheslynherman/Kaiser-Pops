@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 const url = "https://kaiser-pops-api.onrender.com/";
 import axios from "axios";
-// import sweet from 'sweet-alert'
+import Swal from "sweetalert2";
 import { useCookies } from "vue3-cookies";
 const { cookies } = useCookies();
 import router from "@/router";
@@ -66,6 +66,10 @@ export default createStore({
     setMessage: (state, value) => {
       state.message = value;
     },
+    // setUserData: (state, userData) =>{
+    //   state.userData = userData;
+    //   if (userData && userData)
+    // },
     setCart: (state, value) => {
       state.cart = value;
     },
@@ -130,18 +134,22 @@ export default createStore({
     async updateProduct(context, payload) {
       try {
         const res = await axios.patch(
-          `${url}product/${payload.productID}`,
-          data
+          `${url}products/${payload.productID}`,
+          payload
         );
         const { message, err } = await res.data;
+        if (err) {
+          console.log("An error has occurred: ", err);
+          context.commit("setMessage", err);
+        }
+
         if (message) {
-          context.commit("setProduct", message);
           context.dispatch("getProducts");
-        } else {
-          context.commit("setMessage", err)
+          context.commit("setProduct", message);
+          context.commit("setMessage", "product has successfully been updated");
         }
       } catch (e) {
-        context.commit("setMessage", "error");
+        context.commit("setMessage", e);
       }
     },
     async addProduct(context, payload) {
@@ -158,33 +166,6 @@ export default createStore({
         context.commit("setMessage", e);
       }
     },
-    // async getCart(context, id) {
-    //   const res = await axios.get(`${url}user/${id}/carts`);
-    //   context.commit("setCart");
-    // },
-
-    // async addProdToCart({ commit }, { userID, productID }) {
-    //   try {
-    //     const res = await axios.post(`${url}user/${userID}}/cart`, {
-    //       userID,
-    //       productID,
-    //     });
-    //     if (res.status === 200) {
-    //       commit("addToCart", res.data);
-    //     } else {
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
-    // async deleteFromCart({ commit }, { userID, orderId }) {
-    //   try {
-    //     await axios.delete(`${url}user/${userID}/cart/${orderId}`);
-    //     commit("removeFromCart", orderId);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
 
     getUsers: async (context) => {
       try {
@@ -211,19 +192,6 @@ export default createStore({
         context.commit("setMessage", "An error occurred while fetching user");
       }
     },
-    // getUser: async (context, id) => {
-    //   try {
-    //     const res = await fetch(`${url}users/${id}`);
-    //     if (!res.ok) {
-    //       throw new Error("Unable to fetch user");
-    //     }
-    //     const { result } = await res.json();
-    //     console.log(result);
-    //     context.commit("setUser", result);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
 
     async register(context, payload) {
       try {
@@ -287,6 +255,25 @@ export default createStore({
         }
       } catch (e) {
         console.error(e);
+      }
+    },
+
+    async getCart(context, id) {
+      const res = await axios.get(`${url}user/${id}/carts`);
+      context.commit("setCart", res.data);
+    },
+    async addProdToCart({ commit }, { userID, productID }) {
+      try {
+        const res = await axios.post(`${url}user/${userID}/cart`, {
+          userID,
+          productID,
+        });
+        if (res.status === 200) {
+          commit("addToCart", res.data);
+        } else {
+        }
+      } catch (err) {
+        console.error(err);
       }
     },
   },

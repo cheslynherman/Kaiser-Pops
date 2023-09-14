@@ -109,7 +109,7 @@
               />
             </div>
             <button type="reset" class="">Reset</button>
-            <button type="submit" class="">Save</button>
+            <button type="submit" class="" data-bs-dismiss="modal">Save</button>
           </form>
         </div>
       </div>
@@ -154,23 +154,39 @@ export default {
     },
     updateProduct() {
       this.$store.dispatch("updateProduct", this.payload)
-      // this.$store
-      //   .dispatch("updateProduct", {
-      //     productID: productID,
-      //     ...this.updateProd,
-      //   })
-      //   .then(() => {
-      //     console.log("updated");
-      //   })
-      //   .catch((err) => {
-      //     console.error("error while updating", err);
-      //   });
+    
     },
   },
 };
 </script>
 
 <style scoped>
+.inputs {
+  margin: 10px;
+}
+
+.modal-content {
+  background: #ffdd83;
+}
+
+input {
+  border: 2px solid #526d82 !important;
+  background: #526d82 !important;
+  border-radius: 30px !important;
+  color: #272829;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+input:hover {
+  background: #526d82;
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 button {
   background: #526d82;
   border-radius: 30px;
@@ -191,3 +207,4 @@ button:hover {
   transition: all 0.2s ease-out;
 }
 </style>
+

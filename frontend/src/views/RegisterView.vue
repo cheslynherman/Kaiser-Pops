@@ -87,6 +87,7 @@
         />
       </div>
     </form>
+    <p class="text-center m-1">All fields are required</p>
     <div class="text-center">
       <button type="submit" @click="addUser()" class="">Register</button>
     </div>
