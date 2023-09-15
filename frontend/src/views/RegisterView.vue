@@ -12,6 +12,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please insert your first name')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -25,6 +27,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please insert your last name')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -38,6 +42,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please insert your email address')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -49,6 +55,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please state your gender')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -60,6 +68,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please state your age')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -71,6 +81,8 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          oninvalid="this.setCustomValidity('Please insert your residing city')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
 
@@ -84,6 +96,9 @@
           class="form-control"
           id="exampleFormControlInput1"
           required
+          minlength="5"
+          oninvalid="this.setCustomValidity('Please insert a strong password')"
+          oninput="this.setCustomValidity('')"
         />
       </div>
     </form>
