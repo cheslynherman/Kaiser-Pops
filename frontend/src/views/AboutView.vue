@@ -71,18 +71,18 @@
         <p>Email: info@kaiserpopsstore.co.za</p>
         <p>Address: 314 Imam Haron Road, Lansdowne</p>
         <p>Business Hours: 9AM - 4PM</p>
-        <a href="https://www.facebook.com/"
+        <a href="https://www.facebook.com/" target="blank"
           ><img
             src="https://i.postimg.cc/bN0M7ZQ3/icons8-facebook-150-3.png"
             alt="Facebook"
             class="socials img-fluid" /></a
-        ><a href="https://www.instagram.com/"
+        ><a href="https://www.instagram.com/" target="blank"
           ><img
             src="https://i.postimg.cc/htSwcKsg/icons8-instagram-100-2.png"
             alt="Instagram"
             class="socials img-fluid"
         /></a>
-        <a href="https://www.twitter.com/"
+        <a href="https://www.twitter.com/" target="blank"
           ><img
             src="https://i.postimg.cc/QtWY0C8g/icons8-twitter-100-1.png"
             alt="Twitter"
