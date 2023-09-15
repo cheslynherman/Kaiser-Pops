@@ -32,7 +32,7 @@
       </p>
       <br />
       <p>
-        At Kaiser Pops, it's more than just buying and selling—it's about
+        At Kaiser Pops, it's more than just buying and selling — it's about
         creating a space where our shared passions can thrive. Every piece in
         our collection is carefully chosen to evoke nostalgia, ignite
         conversations, and bring smiles to your faces. As collectors ourselves,
