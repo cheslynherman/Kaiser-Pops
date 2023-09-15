@@ -71,6 +71,23 @@
         <p>Email: info@kaiserpopsstore.co.za</p>
         <p>Address: 314 Imam Haron Road, Lansdowne</p>
         <p>Business Hours: 9AM - 4PM</p>
+        <a href="https://www.facebook.com/"
+          ><img
+            src="https://i.postimg.cc/bN0M7ZQ3/icons8-facebook-150-3.png"
+            alt="Facebook"
+            class="socials img-fluid" /></a
+        ><a href="https://www.instagram.com/"
+          ><img
+            src="https://i.postimg.cc/htSwcKsg/icons8-instagram-100-2.png"
+            alt="Instagram"
+            class="socials img-fluid"
+        /></a>
+        <a href="https://www.twitter.com/"
+          ><img
+            src="https://i.postimg.cc/QtWY0C8g/icons8-twitter-100-1.png"
+            alt="Twitter"
+            class="socials img-fluid"
+        /></a>
       </div>
     </div>
   </div>
@@ -94,6 +111,10 @@ export default {};
   margin: 20px;
 }
 
+.socials {
+  height: 100px;
+}
+
 .details {
   border-top: 2px solid #526d82;
   border-bottom: 2px solid #526d82;
@@ -102,7 +123,10 @@ export default {};
   padding: 10px;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
 }
 
@@ -113,7 +137,7 @@ h1, h2, h3, p {
   }
 }
 
-@media only screen and (max-width: 600px)  {
+@media only screen and (max-width: 600px) {
   .information {
     display: flex;
     flex-direction: column;
@@ -130,6 +154,5 @@ h1, h2, h3, p {
   .para {
     width: 70% !important;
   }
-  
 }
 </style>
