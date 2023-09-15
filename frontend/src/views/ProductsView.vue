@@ -153,4 +153,27 @@ select {
     grid-template-columns: auto auto auto auto;
     justify-content: center;
 }
+
+@media only screen and (max-width: 800px) {
+  .display {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .display {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  button {
+    width: 200px !important;
+  }
+}
 </style>

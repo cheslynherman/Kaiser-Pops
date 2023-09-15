@@ -8,7 +8,7 @@
         class="img-fluid m-3"
       />
     </div>
-    <div class="container-fluid m-auto w-50">
+    <div class="para container-fluid m-auto w-50">
       <p>
         Hello, fellow collectors and enthusiasts! I'm Cheslyn Herman, the
         founder of Kaiser Pops, and I am thrilled to share my journey of turning
@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <div class="details">
+  <div class="details container-fluid">
     <h2 class="text-center m-3">More Information</h2>
     <div class="information container-fluid d-flex justify-content-center">
       <div class="map">
@@ -104,5 +104,32 @@ export default {};
 
 h1, h2, h3, p {
   text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
+
+@media only screen and (max-width: 700px) {
+  iframe {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 600px)  {
+  .information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  iframe {
+    height: 200px;
+    width: 200px;
+  }
+  .para {
+    width: 70% !important;
+  }
+  
 }
 </style>

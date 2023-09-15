@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top fixed-top">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/"
         ><img
@@ -52,6 +52,7 @@ export default {
 nav {
   background-color: #ffdd83 !important;
   margin-bottom: 20px;
+  
 }
 .navImage {
   height: 60px;

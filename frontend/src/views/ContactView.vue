@@ -137,4 +137,19 @@ button:hover {
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
+
+@media only screen and (max-width: 800px) {
+  .formSection {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .formSection {
+    width: 85%;
+  }
+  .inputs {
+    width: 100%;
+  }
+}
 </style>

@@ -71,6 +71,11 @@ export default {
   methods: {
     login() {
       this.$store.dispatch("login", this.payload);
+      this.$swal ({
+        title: "Logged in successfully",
+        icon: "success",
+        timer: 4000
+      })
       this.$router.push("/");
     },
   },

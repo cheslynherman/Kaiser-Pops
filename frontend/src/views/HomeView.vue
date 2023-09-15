@@ -1,6 +1,5 @@
 <template>
   <body>
-  
     <div class="logo container-fluid d-flex justify-content-center">
       <h1 class="kaiserPops">Kaiser Pops</h1>
     </div>
@@ -8,7 +7,7 @@
       <h1 class="slogan">Popping Dreams Into Reality</h1>
     </div>
 
-    <div class="container-fluid d-flex justify-content-center">
+    <div class="car-div container-fluid d-flex justify-content-center">
       <div class="carousels">
         <div id="firstCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -132,6 +131,22 @@
           </button>
         </div>
       </div>
+      
+    </div>
+    <div class="welcome container-fluid">
+      <p>
+        Step into a world of pop culture wonder at Kaiser Pops, your ultimate
+        destination for all things collectible. Allow us to take you on a
+        journey through the realms of nostalgia, fandom, and exclusive treasures
+        as we celebrate the passions that unite us. We're thrilled to have you
+        join our community of enthusiasts, where every pop, every figure, and
+        every purchase is a celebration of the extraordinary. Dive into a
+        treasure trove of Funko Pops, rare finds, and exclusive releases that'll
+        make your collector's heart skip a beat.
+      </p>
+      <button class="prod">
+        <router-link to="/products">Lets Go On An Adventure</router-link>
+      </button>
     </div>
     <ul class="circles">
       <li></li>
@@ -474,7 +489,13 @@ export default {};
   margin-bottom: 100px;
   font-family: "Sedgwick Ave Display", cursive;
 }
-
+a {
+  text-decoration: none;
+  color: #272829;
+}
+p {
+  text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
 .carousels {
   margin: 50px;
   /* height: 50vh; */
@@ -490,8 +511,6 @@ export default {};
   /* transform: skewY(5deg); */
 }
 
-
-
 .carousel-control-next-icon {
   filter: invert(100%);
 }
@@ -503,7 +522,32 @@ export default {};
 .d-block {
   height: 400px;
 }
+.welcome {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
 
+
+
+.prod {
+  width: 250px;
+  background: #526d82;
+  border: 2px solid #526d82;
+  border-radius: 30px;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin: 5px;
+}
+
+.prod:hover {
+  box-shadow: 0 0 30px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 .circles {
   position: absolute;
   top: 0;
@@ -610,6 +654,29 @@ export default {};
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .car-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .img-fluid {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .img-fluid {
+    height: 180px;
+    width: 180px;
+  }
+  .prod {
+    width: 150px;
   }
 }
 </style>
