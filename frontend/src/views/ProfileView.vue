@@ -96,7 +96,7 @@ h3 {
 
 @media only screen and (max-width: 500px) {
   h3 {
-    font-size: 15px;
+    font-size: 12px;
   }
   img {
     height: 100px;
