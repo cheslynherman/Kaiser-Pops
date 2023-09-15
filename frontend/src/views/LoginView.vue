@@ -155,13 +155,13 @@ button:hover {
 
 @media only screen and (max-width: 800px) {
   .form {
-    width: 70%;
+    width: 75%;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .form {
-    width: 85%;
+    width: 86%;
   }
 }
 </style>
