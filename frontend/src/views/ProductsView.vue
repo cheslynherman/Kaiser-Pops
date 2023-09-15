@@ -92,11 +92,36 @@ button {
   background: #526d82;
   color: #272829;
   border: 2px solid #526d82;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+input:hover,
+select:hover,
+button:hover {
+  box-shadow: 0 0 20px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  transform: translateY(-0.33em)
+}
+.cart {
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.cart:hover {
+  box-shadow: 0 0 20px 5px #526d82;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  transform: translateY(-0.33em)
 }
 input,
 select,
 .sort {
   border-radius: 30px;
+  padding: 3px;
 }
 
 input,

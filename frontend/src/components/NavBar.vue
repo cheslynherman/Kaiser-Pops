@@ -67,6 +67,25 @@ nav {
 .navButtons {
   margin-right: 20px;
   color: #272829;
+  line-height: 2;
+  position: relative;
+}
+
+.navButtons::before {
+  content: '';
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #272829;
+  position: absolute;
+  left: 0;
+  transition: transform .4s, opacity .4s;
+  opacity: 0;
+}
+
+.navButtons:hover::before {
+  transform: translateY(-.25rem);
+  opacity: 1;
 }
 
 a {

@@ -480,7 +480,7 @@ export default {};
   /* height: 50vh; */
   /* From https://css.glass */
   width: 45%;
-  background: rgba(82, 109, 130, 0.05);
+  background: rgba(82, 109, 130, 0.01);
   border-radius: 16px;
   border: 2px solid #526d82;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
