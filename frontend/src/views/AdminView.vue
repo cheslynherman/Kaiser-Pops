@@ -12,20 +12,20 @@
           <th>User ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Email Address</th>
-          <th>Age</th>
-          <th>User Image</th>
-          <th>Actions</th>
+          <th class="none">Email Address</th>
+          <th class="none">Age</th>
+          <th class="none">User Image</th>
+          <th class="none">Actions</th>
         </tr>
         <tbody v-for="user of users" :key="user.userID" :user="user">
           <tr v-if="users">
             <td>{{ user.userID }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.age }}</td>
-            <td><img :src="user.userImage" alt="user" class="img-fluid"></td>
-            <td><button @click="delUser(user.userID)">Delete</button><EditUser :user="user"/></td>
+            <td class="none">{{ user.email }}</td>
+            <td class="none">{{ user.age }}</td>
+            <td class="none"><img :src="user.userImage" alt="user" class="img-fluid"></td>
+            <td class="none"><button @click="delUser(user.userID)">Delete</button><EditUser :user="user"/></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>
@@ -45,23 +45,23 @@
         <tr>
           <th>Product ID</th>
           <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Category</th>
+          <th class="none">Quantity</th>
+          <th class="none">Category</th>
           <th>Price</th>
-          <th>Product Image 1</th>
-          <th>Product Image 2</th>
-          <th>Actions</th>
+          <th class="none">Product Image 1</th>
+          <th class="none">Product Image 2</th>
+          <th class="none">Actions</th>
         </tr>
         <tbody v-for="product of products" :key="product.productID" :product="product">
           <tr v-if="products">
             <td>{{ product.productID }}</td>
             <td>{{ product.productName }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.category }}</td>
+            <td class="none">{{ product.quantity }}</td>
+            <td class="none">{{ product.category }}</td>
             <td>{{ product.price }}</td>
-            <td><img :src="product.prodImg1" :alt="product.productName" class="img-fluid"></td>
-            <td><img :src="product.prodImg2" :alt="product.productName" class="img-fluid"></td>
-            <td><button @click="delProduct(product.productID)">Delete</button><EditProduct :product="product"/></td>
+            <td class="none"><img :src="product.prodImg1" :alt="product.productName" class="img-fluid"></td>
+            <td class="none"><img :src="product.prodImg2" :alt="product.productName" class="img-fluid"></td>
+            <td class="none"><button @click="delProduct(product.productID)">Delete</button><EditProduct :product="product"/></td>
           </tr>
           <tr v-else>no</tr>
         </tbody>
@@ -155,5 +155,20 @@ td, th {
 
 .heading {
     text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
+}
+
+@media only screen and (max-width: 800px) {
+  .userTable, .productTable {
+    font-size: 12px;
+  }
+  img {
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .none {
+    display: none;
+  }
 }
 </style>

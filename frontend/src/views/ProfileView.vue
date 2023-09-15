@@ -93,4 +93,13 @@ h1,
 h3 {
   text-shadow: 5px 5px 5px #272829, 0px 0px 18px #272829;
 }
+
+@media only screen and (max-width: 500px) {
+  h3 {
+    font-size: 15px;
+  }
+  img {
+    height: 100px;
+  }
+}
 </style>

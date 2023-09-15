@@ -76,4 +76,11 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+
+@media only screen and (max-width: 400px) {
+  img {
+  height: 250px;
+  
+}
+}
 </style>
